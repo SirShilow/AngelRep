@@ -8,16 +8,12 @@
 <body>
   <a-scene>
     <a-assets>
-      <img id="crying-obsidian-texture" src="image_0.png"> <img id="grass-texture" src="image_1.png">           <img id="portal-texture" src="image_2.png">         <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
+      <img id="crying-obsidian-texture" src="image.png"> <img id="grass-texture" src="image_1.jpg">           <img id="portal-texture" src="image_2.jpg">         <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
     </a-assets>
 
     <a-light type="ambient" color="#BBB"></a-light>
     <a-light type="directional" intensity="0.6" position="-1 1 2"></a-light>
     <a-light type="point" intensity="0.4" distance="10" position="0 2 -2" color="#9e26cf"></a-light>
-
-    <a-entity position="-7 0 -6" scale="10 10 10" gltf-model="#model"></a-entity>
-
-    <a-entity position="0 0 -5">
       
       <a-box position="0 0.5 0" width="4" height="1" depth="1" material="src: #crying-obsidian-texture; repeat: 4 1"></a-box>
       <a-box position="0 4.5 0" width="4" height="1" depth="1" material="src: #crying-obsidian-texture; repeat: 4 1"></a-box>
@@ -38,7 +34,7 @@
   <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
 </a-assets>
 
-<a-entity gltf-model="#model" position="0 0 -3" scale="1 1 1"></a-entity>
+<a-entity gltf-model="#model" position="-12 -5 -6" scale="10 10 10"></a-entity>
 
     <a-entity camera look-controls position="0 1.6 0"></a-entity>
 
