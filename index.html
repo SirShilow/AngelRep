@@ -2,71 +2,46 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Minecraft Nether Portal Interactivo</title>
+  <title>Minecraft Nether Portal & Tree Scene</title>
   <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
 </head>
 <body>
   <a-scene>
     <a-assets>
-      <img id="crying-obsidian-texture" src="image_0.png">
-      <img id="grass-texture" src="image_1.png">
-      <img id="portal-texture" src="image_2.png">
-      <img id="nether-bg" src="nether_view.jpg">
-      <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
+      <img id="crying-obsidian-texture" src="image_0.png"> <img id="grass-texture" src="image_1.png">           <img id="portal-texture" src="image_2.png">         <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
     </a-assets>
-
-    <a-entity camera look-controls position="0 1.6 0">
-      <a-entity cursor="fuse: true; fuseTimeout: 1500"
-                position="0 0 -1"
-                geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
-                material="color: white; shader: flat"
-                animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
-                animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
-                animation__mouseleave="property: scale; startEvents: mouseleave; to: 1 1 1; dur: 100">
-      </a-entity>
-    </a-entity>
 
     <a-light type="ambient" color="#BBB"></a-light>
     <a-light type="directional" intensity="0.6" position="-1 1 2"></a-light>
+    <a-light type="point" intensity="0.4" distance="10" position="0 2 -2" color="#9e26cf"></a-light>
 
-    <a-entity position="-12 -5 -6" scale="9 9 9" gltf-model="#model"></a-entity>
+    <a-entity position="-7 0 -6" scale="10 10 10" gltf-model="#model"></a-entity>
 
     <a-entity position="0 0 -5">
+      
       <a-box position="0 0.5 0" width="4" height="1" depth="1" material="src: #crying-obsidian-texture; repeat: 4 1"></a-box>
       <a-box position="0 4.5 0" width="4" height="1" depth="1" material="src: #crying-obsidian-texture; repeat: 4 1"></a-box>
       <a-box position="-1.5 2.5 0" width="1" height="3" depth="1" material="src: #crying-obsidian-texture; repeat: 1 3"></a-box>
       <a-box position="1.5 2.5 0" width="1" height="3" depth="1" material="src: #crying-obsidian-texture; repeat: 1 3"></a-box>
 
-      <a-box id="portal-center" class="clickable"
-             position="0 2.5 0" width="2" height="3" depth="0.1" 
-             material="src: #portal-texture; opacity: 0.8; transparent: true; emissive: #9e26cf; emissiveIntensity: 0.5"
+      <a-box position="0 2.5 0" width="2" height="3" depth="0.1" 
+             material="src: #portal-texture; repeat: 1 1; opacity: 0.8; transparent: true; emissive: #9e26cf; emissiveIntensity: 0.5"
              animation="property: material.opacity; from: 0.5; to: 0.9; dir: alternate; dur: 1200; loop: true">
       </a-box>
     </a-entity>
 
-    <a-plane id="ground" rotation="-90 0 0" width="100" height="100" material="src: #grass-texture; repeat: 100 100"></a-plane>
+    <a-plane rotation="-90 0 0" width="100" height="100" material="src: #grass-texture; repeat: 100 100"></a-plane>
 
-    <a-sky id="sky-bg" color="#9ee1f0"></a-sky>
+    <a-sky src="minecraft.jpg" rotation="0 -90 0"></a-sky>
+
+    <a-assets>
+  <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
+</a-assets>
+
+<a-entity gltf-model="#model" position="0 0 -3" scale="1 1 1"></a-entity>
+
+    <a-entity camera look-controls position="0 1.6 0"></a-entity>
 
   </a-scene>
-
-  <script>
-    // Lógica para el "teletransporte" al Nether
-    const portal = document.querySelector('#portal-center');
-    const sky = document.querySelector('#sky-bg');
-    const ground = document.querySelector('#ground');
-
-    portal.addEventListener('click', function () {
-      // 1. Cambiamos el cielo por la imagen del Nether
-      sky.setAttribute('src', '#nether-bg');
-      sky.setAttribute('color', '#FFF'); // Quitamos el tinte azul
-
-      // 2. Opcional: Cambiamos el pasto por un color rojizo o textura de Netherrack
-      ground.setAttribute('material', 'src: ; color: #4a0000'); 
-      
-      // 3. Efecto visual de haber cruzado
-      console.log("¡Has entrado al Nether!");
-    });
-  </script>
 </body>
 </html>
