@@ -29,10 +29,16 @@
              animation="property: material.opacity; from: 0.5; to: 0.9; dir: alternate; dur: 1200; loop: true">
       </a-box>
     </a-entity>
+<a-assets>
+  <a-asset-item id="model" src="minecraft_tree.glb"></a-asset-item>
+</a-assets>
 
+<a-entity gltf-model="#model" position="0 0 -3" scale="1 1 1"></a-entity>
+
+    
     <a-plane rotation="-90 0 0" width="50" height="50" material="src: #grass-texture; repeat: 50 50"></a-plane>
 
-   <a-sky src="assets/minecraft.jpg" rotation="0 -90 0"></a-sky>
+   <a-sky src="minecraft.jpg" rotation="0 -90 0"></a-sky>
 
   </a-scene>
 </body>
